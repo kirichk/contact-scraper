@@ -34,7 +34,9 @@ def platform_settings():
         'TOP_LEFT_CONTACT_FIELD_X': 0,
         'TOP_LEFT_CONTACT_FIELD_Y': int(screenWidth / 6),
         'CONTACT_FIELD_WEIGHT': 400,
-        'CONTACT_FIELD_HEIGHT': 100
+        'CONTACT_FIELD_HEIGHT': 100,
+        'CROSS_BUTTON_X': screenWidth / 6.5,
+        'CROSS_BUTTON_Y': screenHeight / 5.3,
     }
 
         # 'SEARCH_FIELD_X': screenWidth * 0.695,
