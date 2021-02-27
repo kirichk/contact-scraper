@@ -1,15 +1,16 @@
 import pyautogui
 import time
 import platform
+import keyboard
 from settings import platform_settings
 
 
 text1 = 'Привет! Мы рады приветствовать тебя в группе по трудоустройству моряков — '
-text2 = 'TOPCREW. '\
+text2 = 'TOPCREW. '
 text3 = 'Подписывайся прямо сейчас.'
 text4 = '\nhttps://invite.viber.com/?g2=AQBrdQUS4O%2FWW0zpmfDWOkwGAl0bi4HPZ4VwEtaB%2Bn50BN1JDFKu5%2B7lFn0Ng8HX'
 text5 = '\nМы поможем тебе найти работу в море абсолютно бесплатно! Это реальный шанс трудоустройства. Мы представляем крупнейшие крюинги по всему миру.'\
-'Хочешь получать вакансии только по своему профилю? Используй нашего бесплатного бота для поиска вакансий  —
+'Хочешь получать вакансии только по своему профилю? Используй нашего бесплатного бота для поиска вакансий  — '
 text6 = 'TOPCREW. \nhttps://www.viber.com/topcrew'
 
 def get_names_from_vcf():
@@ -59,6 +60,8 @@ def sending_funnel(contacts: list):
             pyautogui.hotkey('shift', 'alt')
             pyautogui.write(text6)
             time.sleep(1)
+            if keyboard.is_pressed('Esc'):
+                break
             pyautogui.moveTo(SEND_FIELD_X, SEND_FIELD_Y)
             time.sleep(5)
             pyautogui.click(CROSS_BUTTON_X, CROSS_BUTTON_Y)
@@ -70,4 +73,4 @@ def sending_funnel(contacts: list):
 if __name__ == '__main__':
     locals().update(platform_settings())
     contacts = get_names_from_vcf()
-    sending_funnel(['TopCrew'])
+    sending_funnel(contacts)
