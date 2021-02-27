@@ -1,4 +1,5 @@
 import pyautogui
+import sys
 import time
 import platform
 import pyperclip
@@ -9,7 +10,8 @@ from settings import platform_settings
 text = 'Привет! Мы рады приветствовать тебя в группе по трудоустройству моряков — TOPCREW. Подписывайся прямо сейчас.'\
 '\nhttps://invite.viber.com/?g2=AQBrdQUS4O%2FWW0zpmfDWOkwGAl0bi4HPZ4VwEtaB%2Bn50BN1JDFKu5%2B7lFn0Ng8HX'\
 '\nМы поможем тебе найти работу в море абсолютно бесплатно! Это реальный шанс трудоустройства. Мы представляем крупнейшие крюинги по всему миру.'\
-'Хочешь получать вакансии только по своему профилю? Используй нашего бесплатного бота для поиска вакансий  — TOPCREW. \nhttps://www.viber.com/topcrew'
+'\nХочешь получать вакансии только по своему профилю? Используй нашего бесплатного бота для поиска вакансий  — TOPCREW. '
+text_link = 'viber://pa?chatURI=TopCrew'
 
 
 def paste(text: str):
@@ -20,7 +22,7 @@ def paste(text: str):
 
 
 def get_names_from_vcf():
-    with open('Contact-A(2).vcf', mode='r') as vcf:
+    with open('contacts.vcf', mode='r') as vcf:
         data = vcf.read().split('\n')
         result = []
         for item in data:
@@ -30,11 +32,13 @@ def get_names_from_vcf():
 
 
 def sending_funnel(contacts: list):
-    print('Program started, you have 5 seconds to open Viber on a fullscreen')
+    print('Program started, you have 10 seconds to open Viber on a fullscreen')
     time.sleep(10)
     for contact in contacts:
         pyautogui.click(SEARCH_FIELD_X, SEARCH_FIELD_Y)
         for letter in contact:
+            if keyboard.is_pressed('Esc'):
+                sys.exit()
             pyautogui.press(letter)
         time.sleep(2)
         if pyautogui.locateOnScreen(image='windows.png',
@@ -47,15 +51,25 @@ def sending_funnel(contacts: list):
             pyautogui.click(SEARCH_RESULT_FIELD_X, SEARCH_RESULT_FIELD_Y)
             time.sleep(1)
             pyautogui.click(MESSAGE_FIELD_X, MESSAGE_FIELD_Y)
-            pyautogui.hotkey('Win')
-            paste(text)
+            pyperclip.copy(text)
+            pyautogui.hotkey('ctrl', 'v')
             time.sleep(1)
             if keyboard.is_pressed('Esc'):
-                break
-            pyautogui.moveTo(SEND_FIELD_X, SEND_FIELD_Y)
+                sys.exit()
+            pyautogui.click(SEND_FIELD_X, SEND_FIELD_Y)
+            pyautogui.click(SEND_FIELD_LONGER_X, SEND_FIELD_LONGER_Y)
+            pyperclip.copy(text_link)
+            pyautogui.hotkey('ctrl', 'v')
+            time.sleep(1)
+            if keyboard.is_pressed('Esc'):
+                sys.exit()
+            pyautogui.click(SEND_FIELD_X, SEND_FIELD_Y)
+            pyautogui.click(SEND_FIELD_LONGER_X, SEND_FIELD_LONGER_Y)
             time.sleep(5)
             pyautogui.click(CROSS_BUTTON_X, CROSS_BUTTON_Y)
         else:
+            if keyboard.is_pressed('Esc'):
+                sys.exit()
             pyautogui.click(CROSS_BUTTON_X, CROSS_BUTTON_Y)
             time.sleep(2)
 

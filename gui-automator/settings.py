@@ -31,6 +31,8 @@ def platform_settings():
         'MESSAGE_FIELD_Y': screenHeight / 1.1,
         'SEND_FIELD_X': screenWidth / 1.28,
         'SEND_FIELD_Y': screenHeight / 1.08,
+        'SEND_FIELD_LONGER_X': screenWidth / 1.02,
+        'SEND_FIELD_LONGER_Y': screenHeight / 1.08,
         'TOP_LEFT_CONTACT_FIELD_X': 0,
         'TOP_LEFT_CONTACT_FIELD_Y': int(screenWidth / 6),
         'CONTACT_FIELD_WEIGHT': 400,
