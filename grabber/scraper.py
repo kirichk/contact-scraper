@@ -43,6 +43,8 @@ def vcard_handler(person: dict):
 
     with open(f'Contacts-{LETTER}.vcf', 'a', newline='') as f:
         f.write(vcard.serialize())
+    with open('numbers.txt', 'a', newline='') as f:
+        f.write(person['phone'] + "\n")
 
 
 @logger.catch
@@ -111,7 +113,7 @@ def info_search(profiles: list, session: requests.Session):
         try:
             for row in details.find_all("div", class_="colmn3"):
                 row_content = row.text.split(":")
-                if row_content[0] == "Contact number":
+                if row_content[0] == "Personal mobile number":
                     info['phone'] = row_content[1]
                 if row_content[0] == "E-Mail":
                     info['email'] = row_content[1]
