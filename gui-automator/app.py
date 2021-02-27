@@ -61,6 +61,7 @@ def sending_funnel(contacts: list):
             time.sleep(1)
             pyautogui.moveTo(SEND_FIELD_X, SEND_FIELD_Y)
             time.sleep(5)
+            pyautogui.click(CROSS_BUTTON_X, CROSS_BUTTON_Y)
         else:
             pyautogui.click(CROSS_BUTTON_X, CROSS_BUTTON_Y)
             time.sleep(2)
