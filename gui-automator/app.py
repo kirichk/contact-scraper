@@ -4,13 +4,14 @@ import platform
 from settings import platform_settings
 
 
-
-# text_to_send = pyautogui.prompt(text='Введите текст для рассылки сообщений',
-#                       title='Ввод текста',
-#                       default='Привет')
+text = 'Привет! Мы рады приветствовать тебя в группе по трудоустройству моряков — TOPCREW. Подписывайся прямо сейчас.'\
+'\nhttps://invite.viber.com/?g2=AQBrdQUS4O%2FWW0zpmfDWOkwGAl0bi4HPZ4VwEtaB%2Bn50BN1JDFKu5%2B7lFn0Ng8HX'\
+'\nМы поможем тебе найти работу в море абсолютно бесплатно! Это реальный шанс трудоустройства. Мы представляем крупнейшие крюинги по всему миру.'
+'\nХочешь получать вакансии только по своему профилю? Используй нашего бесплатного бота для поиска вакансий  — TOPCREW.'
+'\nhttps://www.viber.com/topcrew'
 
 def get_names_from_vcf():
-    with open('Contacts-A.vcf', mode='r') as vcf:
+    with open('Contact-A(2).vcf', mode='r') as vcf:
         data = vcf.read().split('\n')
         result = []
         for item in data:
@@ -21,7 +22,7 @@ def get_names_from_vcf():
 
 def sending_funnel(contacts: list):
     print('Program started, you have 5 seconds to open Viber on a fullscreen')
-    time.sleep(5)
+    time.sleep(10)
     for contact in contacts:
         pyautogui.click(SEARCH_FIELD_X, SEARCH_FIELD_Y)
         for letter in contact:
@@ -37,10 +38,10 @@ def sending_funnel(contacts: list):
             pyautogui.click(SEARCH_RESULT_FIELD_X, SEARCH_RESULT_FIELD_Y)
             time.sleep(1)
             pyautogui.click(MESSAGE_FIELD_X, MESSAGE_FIELD_Y)
-            pyautogui.write('Test')
+            pyautogui.write(text)
             time.sleep(1)
             pyautogui.moveTo(SEND_FIELD_X, SEND_FIELD_Y)
-            time.sleep(10)
+            time.sleep(5)
         else:
             pyautogui.click(CROSS_BUTTON_X, CROSS_BUTTON_Y)
             time.sleep(2)
