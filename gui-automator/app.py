@@ -4,11 +4,13 @@ import platform
 from settings import platform_settings
 
 
-text = 'Привет! Мы рады приветствовать тебя в группе по трудоустройству моряков — TOPCREW. Подписывайся прямо сейчас.'\
-'\nhttps://invite.viber.com/?g2=AQBrdQUS4O%2FWW0zpmfDWOkwGAl0bi4HPZ4VwEtaB%2Bn50BN1JDFKu5%2B7lFn0Ng8HX'\
-'\nМы поможем тебе найти работу в море абсолютно бесплатно! Это реальный шанс трудоустройства. Мы представляем крупнейшие крюинги по всему миру.'
-'\nХочешь получать вакансии только по своему профилю? Используй нашего бесплатного бота для поиска вакансий  — TOPCREW.'
-'\nhttps://www.viber.com/topcrew'
+text1 = 'Привет! Мы рады приветствовать тебя в группе по трудоустройству моряков — '
+text2 = 'TOPCREW. '\
+text3 = 'Подписывайся прямо сейчас.'
+text4 = '\nhttps://invite.viber.com/?g2=AQBrdQUS4O%2FWW0zpmfDWOkwGAl0bi4HPZ4VwEtaB%2Bn50BN1JDFKu5%2B7lFn0Ng8HX'
+text5 = '\nМы поможем тебе найти работу в море абсолютно бесплатно! Это реальный шанс трудоустройства. Мы представляем крупнейшие крюинги по всему миру.'\
+'Хочешь получать вакансии только по своему профилю? Используй нашего бесплатного бота для поиска вакансий  —
+text6 = 'TOPCREW. \nhttps://www.viber.com/topcrew'
 
 def get_names_from_vcf():
     with open('Contact-A(2).vcf', mode='r') as vcf:
@@ -38,7 +40,24 @@ def sending_funnel(contacts: list):
             pyautogui.click(SEARCH_RESULT_FIELD_X, SEARCH_RESULT_FIELD_Y)
             time.sleep(1)
             pyautogui.click(MESSAGE_FIELD_X, MESSAGE_FIELD_Y)
-            pyautogui.write(text)
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.write(text1)
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.write(text2)
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.write(text3)
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.write(text4)
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.write(text5)
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.hotkey('shift', 'alt')
+            pyautogui.write(text6)
             time.sleep(1)
             pyautogui.moveTo(SEND_FIELD_X, SEND_FIELD_Y)
             time.sleep(5)
@@ -50,4 +69,4 @@ def sending_funnel(contacts: list):
 if __name__ == '__main__':
     locals().update(platform_settings())
     contacts = get_names_from_vcf()
-    sending_funnel(contacts)
+    sending_funnel(['TopCrew'])
