@@ -1,4 +1,5 @@
 import pyautogui
+import random
 import sys
 import time
 import platform
@@ -56,16 +57,18 @@ def sending_funnel(contacts: list):
             time.sleep(1)
             if keyboard.is_pressed('Esc'):
                 sys.exit()
-            pyautogui.click(SEND_FIELD_X, SEND_FIELD_Y)
-            pyautogui.click(SEND_FIELD_LONGER_X, SEND_FIELD_LONGER_Y)
+            ######################
+            pyautogui.moveTo(SEND_FIELD_X, SEND_FIELD_Y)
+            pyautogui.moveTo(SEND_FIELD_LONGER_X, SEND_FIELD_LONGER_Y)
             pyperclip.copy(text_link)
             pyautogui.hotkey('ctrl', 'v')
             time.sleep(1)
             if keyboard.is_pressed('Esc'):
                 sys.exit()
-            pyautogui.click(SEND_FIELD_X, SEND_FIELD_Y)
-            pyautogui.click(SEND_FIELD_LONGER_X, SEND_FIELD_LONGER_Y)
-            time.sleep(5)
+            pyautogui.moveTo(SEND_FIELD_X, SEND_FIELD_Y)
+            pyautogui.moveTo(SEND_FIELD_LONGER_X, SEND_FIELD_LONGER_Y)
+            #####################
+            time.sleep(random.randint(30, 90))
             pyautogui.click(CROSS_BUTTON_X, CROSS_BUTTON_Y)
         else:
             if keyboard.is_pressed('Esc'):
